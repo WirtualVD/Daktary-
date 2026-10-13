@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;display=swap">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;background:#0D1B33;color:#EEE9DF;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:#EEE9DF;text-underline-offset:4px;text-decoration-thickness:1px}
+    a:hover{color:#29A3E0}
+    ::selection{background:#A6CE39;color:#0D1B33}
+    @keyframes v3In{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;overflow-x:hidden">
+  <header style="position:sticky;top:0;z-index:30;background:#0D1B33;border-bottom:1px solid #223860">
+    <div style="max-width:1320px;margin:0 auto;padding:12px clamp(18px,3vw,36px);min-height:64px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+      <a href="index.html" style="display:flex;align-items:center"><img src="assets/daktari-veterinary-clinic-logo.webp" alt="Daktari veterinarska klinika" width="104" height="24" fetchpriority="high" decoding="async" style="height:24px;width:auto;display:block;filter:brightness(0) invert(.93)"></a>
+      <nav style="display:flex;flex-wrap:wrap;gap:6px 28px;font-size:14px;font-weight:500;letter-spacing:.02em">
+        <a href="index.html#usluge" style="text-decoration:none">Usluge</a>
+        <a href="o-nama.html" aria-current="page" style="color:#A6CE39;text-decoration:none">Klinika</a>
+        <a href="usluge.html" style="text-decoration:none">Cenovnik</a>
+        <a href="index.html#kontakt" style="text-decoration:none">Kontakt</a>
+      </nav>
+      <a href="index.html#zakazivanje" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#A6CE39;color:#0D1B33;text-decoration:none;font-size:14px;font-weight:700" style-hover="background:#29A3E0;color:#0D1B33">Zakažite pregled</a>
+    </div>
+  </header>
+
+  <section data-screen-label="Naša priča" style="max-width:1320px;margin:0 auto;padding:clamp(40px,7vw,96px) clamp(18px,3vw,36px) clamp(48px,6vw,80px)">
+    <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8D9BB3;animation:v3In .7s cubic-bezier(.2,.7,.2,1) both">Naša priča</div>
+    <h1 style="margin:clamp(20px,3vw,36px) 0 0;font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,8.4vw,128px);line-height:.88;letter-spacing:-.025em;max-width:11em;text-wrap:balance;animation:v3In .9s cubic-bezier(.2,.7,.2,1) .08s both">Veterinarska klinika Daktari, <em style="color:#A6CE39">pored vas u svakom trenutku</em></h1>
+    <p style="margin:clamp(28px,4vw,48px) 0 0 auto;max-width:30em;font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:#C9C4BA;text-wrap:pretty;animation:v3In .9s cubic-bezier(.2,.7,.2,1) .2s both">Ljubimci nisu samo deo porodice, oni su porodica. Zato je Daktari nastao iz jednostavne, ali duboke potrebe: da svaki ljubimac ima pristup vrhunskoj nezi, a svaki vlasnik mir da zna da je na pravom mestu.</p>
+  </section>
+
+  <section data-screen-label="Prostor" style="max-width:1320px;margin:0 auto;padding:0 clamp(18px,3vw,36px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(12px,2vw,24px)">
+      <sc-for list="{{ spaces }}" as="sp" hint-placeholder-count="3">
+        <figure style="margin:0;margin-top:{{ sp.offset }}">
+          <div role="img" aria-label="{{ sp.label }}" style="width:100%;aspect-ratio:3 / 4;display:block;background:#172A4A;display:flex;align-items:flex-end;padding:14px;font-size:13px;letter-spacing:.06em;color:#8D9BB3">{{ sp.label }}</div>
+          <figcaption style="margin-top:10px;display:flex;justify-content:space-between;font-size:13px;letter-spacing:.06em;color:#8D9BB3"><span>{{ sp.label }}</span><span>{{ sp.n }}</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Vrednosti" style="background:#EEE9DF;color:#0D1B33;margin-top:clamp(56px,8vw,112px)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(18px,3vw,36px)">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px clamp(24px,4vw,64px);padding:clamp(24px,3vw,36px) 0;border-top:1px solid #0D1B33">
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <span style="font-size:14px;color:#6A6458;font-variant-numeric:tabular-nums">{{ v.n }}</span>
+            <h2 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(28px,3.2vw,44px);line-height:1;text-wrap:balance">{{ v.title }}</h2>
+          </div>
+          <p style="margin:0;max-width:38em;color:#3E3A33;text-wrap:pretty">{{ v.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Tim">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(18px,3vw,36px)">
+      <h2 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(44px,5.6vw,80px);line-height:.92;letter-spacing:-.02em">Veterinari</h2>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(24px,3vw,36px)">
+        <sc-for list="{{ team }}" as="m" hint-placeholder-count="3">
+          <article>
+            <div role="img" aria-label="{{ m.name }}" style="width:100%;aspect-ratio:4 / 5;display:block;background:#172A4A;display:flex;align-items:flex-end;padding:14px;font-size:13px;letter-spacing:.06em;color:#8D9BB3">{{ m.name }}</div>
+            <h3 style="margin:16px 0 0;font-family:'DM Serif Display',serif;font-weight:400;font-size:30px;line-height:1.05;border-top:1px solid #223860;padding-top:12px">{{ m.name }}</h3>
+            <div style="margin-top:4px;font-size:14px;font-weight:600;color:#A6CE39">{{ m.role }}</div>
+            <p style="margin:10px 0 0;font-size:16px;color:#AAB5C8;text-wrap:pretty">{{ m.bio }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Poziv" style="background:#29A3E0;color:#0D1B33">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(18px,3vw,36px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+      <p style="margin:0;font-family:'DM Serif Display',serif;font-size:clamp(36px,4.8vw,72px);line-height:.95;letter-spacing:-.02em;max-width:12em;text-wrap:balance">Prva konsultacija za nove pacijente je besplatna.</p>
+      <a href="index.html#zakazivanje" style="display:inline-flex;align-items:center;height:58px;padding:0 28px;background:#0D1B33;color:#EEE9DF;text-decoration:none;font-weight:700;transition:background-color .2s,color .2s" style-hover="background:#A6CE39;color:#0D1B33">Zakažite pregled</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #223860;overflow:hidden">
+    <nav aria-label="Navigacija u podnožju" style="max-width:1320px;margin:0 auto;padding:32px clamp(18px,3vw,36px) 0;display:flex;flex-wrap:wrap;gap:10px 32px;font-size:16px;font-weight:500">
+      <a href="index.html#usluge" style="color:#EEE9DF;text-decoration:none;transition:color .2s" style-hover="color:#29A3E0">Usluge</a>
+      <a href="o-nama.html" style="color:#EEE9DF;text-decoration:none;transition:color .2s" style-hover="color:#29A3E0">Klinika</a>
+      <a href="usluge.html" style="color:#EEE9DF;text-decoration:none;transition:color .2s" style-hover="color:#29A3E0">Cenovnik</a>
+      <a href="index.html#kontakt" style="color:#EEE9DF;text-decoration:none;transition:color .2s" style-hover="color:#29A3E0">Kontakt</a>
+    </nav>
+    <div style="max-width:1320px;margin:0 auto;padding:20px clamp(18px,3vw,36px) 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px;font-size:14px;color:#8D9BB3">
+      <span>© 2026 Daktari veterinarska klinika</span>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center"><span>Šturova 48, 26210 Kovačica · <a href="tel:+381112345678" style="color:#8D9BB3">+381 11 234 5678</a></span><div style="display:flex;gap:8px;align-items:center"><a href="https://www.instagram.com/daktari_tim/?hl=en" target="_blank" rel="noopener" aria-label="Daktari na Instagramu" style="width:40px;height:40px;border:1px solid #223860;display:inline-flex;align-items:center;justify-content:center;color:#EEE9DF;transition:color .2s,border-color .2s,background-color .2s" style-hover="color:#0D1B33;background:#29A3E0;border-color:#29A3E0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a><a href="https://www.facebook.com/profile.php?id=100083190407494" target="_blank" rel="noopener" aria-label="Daktari na Facebooku" style="width:40px;height:40px;border:1px solid #223860;display:inline-flex;align-items:center;justify-content:center;color:#EEE9DF;transition:color .2s,border-color .2s,background-color .2s" style-hover="color:#0D1B33;background:#29A3E0;border-color:#29A3E0"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"></path></svg></a></div></div>
+    </div>
+    <div aria-hidden="true" style="max-width:1320px;margin:clamp(28px,4vw,48px) auto 0;padding:0 clamp(18px,3vw,36px)"><div style="width:100%;aspect-ratio:563 / 130;background:#172A4A;-webkit-mask:url('assets/daktari-veterinary-clinic-logo.webp') center bottom / contain no-repeat;mask:url('assets/daktari-veterinary-clinic-logo.webp') center bottom / contain no-repeat;margin-bottom:-2%"></div></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const VALUES = [
+  {title:'Naša misija', text:'U Daktariju verujemo da veterinarska medicina treba da bude dostupna, iskrena i vođena empatijom. Ne merimo uspeh samo brojem pregleda, već poverenjem koje gradimo sa svakim pacijentom i njegovim vlasnikom. Svaki dolazak, bilo da je u pitanju redovna kontrola, vakcinacija ili hitna intervencija, tretiramo sa istom pažnjom i posvećenošću.'},
+  {title:'Stručnost u koju možete da verujete', text:'Naš tim čine veterinari i tehničko osoblje koji svoj posao rade sa strašću i odgovornošću. Kontinuirano se usavršavamo i pratimo savremene standarde struke, kako bismo vašem ljubimcu pružili negu zasnovanu na najboljoj praksi, od preventive do složenijih hirurških zahvata.'},
+  {title:'Poverenje kao temelj', text:'Znamo da odlazak kod veterinara često prati briga i neizvesnost. Zato je naš cilj da svaki razgovor bude jasan, svaka dijagnoza objašnjena, a svaka odluka doneta zajedno sa vama. Transparentnost nije samo obećanje, to je način na koji radimo svaki dan.'},
+  {title:'Zajedno, za dug i srećan život vašeg ljubimca', text:'Bilo da dolazite prvi put ili nas već godinama smatrate svojom veterinarskom kućom, u Daktariju ćete uvek naći tim koji sluša, brine i bori se za zdravlje vašeg ljubimca kao da je sopstveni.'}
+];
+const TEAM = [
+  {id:1, name:'Dr Marija Jovanović', role:'Interna medicina, osnivačica klinike', bio:'Preko 15 godina iskustva u internoj medicini malih životinja.'},
+  {id:2, name:'Dr Nikola Petrović', role:'Hirurgija i ortopedija', bio:'Specijalizovan za ortopedske i meko-tkivne hirurške zahvate.'},
+  {id:3, name:'Dr Ana Stanković', role:'Preventiva i dermatologija', bio:'Fokus na preventivnu negu, dermatologiju i dobrobit ljubimaca.'}
+];
+const SPACES = ['Čekaonica','Ordinacija za preglede','Operaciona sala'];
+const pad = n => String(n).padStart(2, '0');
+class Component extends DCLogic {
+  state = { wide: true };
+  componentDidMount() { this.mq = window.matchMedia('(min-width: 901px)'); this.onMq = () => this.setState({wide: this.mq.matches}); this.onMq(); this.mq.addEventListener('change', this.onMq); }
+  componentWillUnmount() { if (this.mq) this.mq.removeEventListener('change', this.onMq); }
+  renderVals() {
+    const wide = this.state.wide;
+    return {
+      values: VALUES.map((v, i) => ({...v, n: pad(i + 1)})),
+      team: TEAM,
+      spaces: SPACES.map((l, i) => ({id: i + 1, label: l, n: pad(i + 1), offset: wide ? [0, 64, 24][i] + 'px' : '0px'}))
+    };
+  }
+}
+</script>
+</body>
+</html>
